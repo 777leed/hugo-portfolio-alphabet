@@ -1,0 +1,145 @@
+{{ define "main" }}
+<!-- skill inventory -->
+{{ partial "skill_inventory.html" . }}
+
+<!-- Header -->
+{{ partial "header.html" . }}
+<!-- main -->
+
+<div class="relative flex items-center w-full max-h-full mt-12">
+  <div class="h-full w-full flex flex-col lg:flex-row justify-between">
+    <!-- Left Panel -->
+    <div class="overflow-y-auto w-full pr-4 relative lg:w-[45%] scrollbar-left">
+      <div class="normal-direction w-full">
+        <div class="pl-4">
+          <h1 class="font-bold text-4xl">KHALID KOUKOU</h1>
+          <div class="typewriter w-fit">
+            <h1 id="job-pos" class="font-light">Software Developer</h1>
+          </div>
+          <div class="mt-4 text-justify">
+            Hey there, welcome to my portfolio! To keep it short, I’m a creative
+            and adaptable developer with a passion for impactful
+            projects—whether it's designing tools, solving complex coding
+            problems, or crafting user-friendly experiences. Take a look around
+            and feel free to reach out!
+          </div>
+
+          <hr class="w-full my-6 h-0.5 border-t-0 bg-white/10" />
+
+          <h1 class="font-bold text-4xl">Experiences</h1>
+          <!-- exps -->
+          <div class="">
+            <div class="mt-2 mb-2">
+              <div class="w-fit">
+                <a
+                  href="https://www.linkedin.com/company/resilient-communities-non-profit"
+                  class="flex items-center"
+                >
+                  <img
+                    src="/images/icons8/icons8-oak-tree-32.png"
+                    class="grayscale h-6 w-6 invert"
+                    alt=""
+                  />
+                  <h1 class="font-light">Resilient Commnunities</h1>
+                </a>
+                <h1 class="font-extralight">2023 - Now</h1>
+              </div>
+              <div class="mt-1 text-justify">
+                At Resilient Communities, I design and manage digital tools,
+                guiding and collaborating with interns to create innovative
+                solutions, including the NGO’s website and apps, to support
+                community projects and initiatives in Morocco.
+              </div>
+            </div>
+            <hr class="w-full my-6 h-0.5 border-t-0 bg-white/5" />
+            <div class="mt-2 mb-2">
+              <div class="w-fit">
+                <a
+                  href="https://www.linkedin.com/company/resilient-communities-non-profit"
+                  class="flex items-center"
+                >
+                  <img
+                    src="/images/icons8/icons8-oak-tree-32.png"
+                    class="grayscale h-6 w-6 invert"
+                    alt=""
+                  />
+                  <h1 class="font-light">Resilient Commnunities</h1>
+                </a>
+                <h1 class="font-extralight">2023 - Now</h1>
+              </div>
+              <div class="mt-1 text-justify">
+                At Resilient Communities, I design and manage digital tools,
+                guiding and collaborating with interns to create innovative
+                solutions, including the NGO’s website and apps, to support
+                community projects and initiatives in Morocco.
+              </div>
+            </div>
+            <hr class="w-full my-6 h-0.5 border-t-0 bg-white/5" />
+            <div class="mt-2 mb-2">
+              <div class="w-fit">
+                <a
+                  href="https://www.linkedin.com/company/resilient-communities-non-profit"
+                  class="flex items-center"
+                >
+                  <img
+                    src="/images/icons8/icons8-oak-tree-32.png"
+                    class="grayscale h-6 w-6 invert"
+                    alt=""
+                  />
+                  <h1 class="font-light">Resilient Commnunities</h1>
+                </a>
+                <h1 class="font-extralight">2023 - Now</h1>
+              </div>
+              <div class="mt-1 text-justify">
+                At Resilient Communities, I design and manage digital tools,
+                guiding and collaborating with interns to create innovative
+                solutions, including the NGO’s website and apps, to support
+                community projects and initiatives in Morocco.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moved bottom shadow outside the content div -->
+        <div
+          class="sticky bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent rounded-md to-black pointer-events-none"
+        ></div>
+      </div>
+    </div>
+    <!-- Right Panel -->
+    <div class="w-full lg:w-[53%] h-fit relative top-0 lg:sticky">
+      <div class="w-full flex max-h-60 justify-between grayscale">
+        <div
+          class="w-[80%] rounded-lg border border-white overflow-hidden flex justify-center items-center bg-gradient-to-b from-gray-900 to-gray-600"
+        >
+          <img src="images/collage1.png" alt="" id="CollageImg" />
+        </div>
+        <div class="w-[18%] rounded-lg overflow-hidden border border-white">
+          <img
+            class="h-full w-full object-cover"
+            src="images/tumblr_ofpdabI2ta1toe0eco1_640.gif"
+            alt=""
+          />
+        </div>
+      </div>
+      <h1 class="text-sm font-extralight italic mt-2">
+        - Building the Future, One Line of Code at a Time.-
+      </h1>
+      <div class="flex justify-between">
+        <canvas id="skillsChart" class="max-h-72 max-w-96"></canvas>
+        <!-- sticker lounge -->
+        <div class="py-4 grayscale">
+          <img
+            src="images/stickerlounge.png"
+            class="max-h-52 rotate-12 hover:rotate-6 transition-all"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/home.js"></script>
+<script src="/js/radar-chart.js"></script>
+{{end}}
