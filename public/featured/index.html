@@ -1,5 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/input.css" />
+    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://pagination.js.org/dist/2.6.0/pagination.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/paginationjs/dist/pagination.css"
+    />
+    
+    <title>Featured Work</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+      integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="text-white overflow-clip w-full min-h-screen relative bg-[#040707] py-4 px-10 uppercase font-[poppins] antialiased"
+  >
+    
+    <div
+  id="pulsing-intro"
+  class="scale-110 w-full h-full min-h-screen flex justify-center items-center fixed z-10 bg-[#040707]"
+>
+  <img class="w-24 h-24 animate-pulse" src="/images/Global.png" alt="" />
+</div>
+<script src="/js/pulsing-intro.js"></script>
+ 
+
+<div
+  id="skill-inventory"
+  class="absolute -bottom-20 left-0 w-full px-8 justify-center items-center transition-all duration-500 z-[999]"
+>
+  <div
+    class="w-full glass backdrop-blur-lg rounded-lg rounded-bl-none rounded-br-none p-4 flex flex-wrap gap-4"
+  >
+    
+  </div>
+</div>
+
+<style>
+  .text-stroke-bl {
+    -webkit-text-stroke: 1px black;
+  }
+</style>
+
+
+
 <header class="flex justify-between items-center">
-  <a href="{{ .Site.BaseURL }}">
+  <a href="http://localhost:1313/">
     <img
       class="h-10 w-10 rounded-sm"
       src="/images/Global.png"
@@ -20,7 +87,7 @@
 
       <li class="">
         <a
-          href="{{ .Site.BaseURL }}/featured/"
+          href="http://localhost:1313//featured/"
           class="text-white flex gap-2 items-center"
         >
           <span>Featured Work</span>
@@ -45,7 +112,7 @@
       <li>
         <a
           class="text-white flex gap-2 items-center"
-          href="{{ .Site.BaseURL }}/alphabet/"
+          href="http://localhost:1313//alphabet/"
         >
           <span>Alphabets</span>
           <img
@@ -55,7 +122,7 @@
           />
         </a>
       </li>
-      <!-- socials -->
+      
       <li class="flex gap-1 bg-white rounded-md px-2 py-1 items-center">
         <span class="text-black">Socials</span>
         <img
@@ -64,7 +131,7 @@
           alt="star icon"
         />
       </li>
-      <!-- light/dark mode -->
+      
       <li
         id="torch-toggle"
         class="flex gap-1 bg-white rounded-md px-2 py-1 items-center cursor-pointer"
@@ -106,7 +173,7 @@
         <li>
           <a
             class="text-white flex gap-2 items-center"
-            href="{{ .Site.BaseURL }}/featured/"
+            href="http://localhost:1313//featured/"
           >
             <span>Featured Work</span>
             <img
@@ -130,7 +197,7 @@
         <li>
           <a
             class="text-white flex gap-2 items-center"
-            href="{{ .Site.BaseURL }}/alphabet/"
+            href="http://localhost:1313//alphabet/"
           >
             <span>Alphabets</span>
             <img
@@ -140,7 +207,7 @@
             />
           </a>
         </li>
-        <!-- socials -->
+        
         <li
           class="flex gap-1 bg-white rounded-md px-2 py-1 items-center justify-between"
         >
@@ -158,3 +225,32 @@
 
 <script src="/js/header.js"></script>
 <script src="/js/skill-inventory.js"></script>
+
+
+
+<div id="data-container" class="w-full h-full flex flex-wrap gap-4 mt-12"></div>
+<div
+  id="pagination-container"
+  class="pagination-custom w-fit mx-auto mt-4"
+></div>
+<script src="/js/featured.js"></script>
+
+
+<style>
+  .pagination-custom {
+    @apply text-white bg-transparent;
+  }
+  .pagination-custom .paginationjs-page {
+    @apply bg-transparent cursor-pointer;
+  }
+  .pagination-custom .paginationjs-page.active {
+    @apply bg-transparent text-black font-bold;
+  }
+  .pagination-custom .paginationjs-nav {
+    @apply bg-transparent;
+  }
+</style>
+
+    <script src="/js/index.js"></script>
+  </body>
+</html>
