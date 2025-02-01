@@ -3,16 +3,16 @@
   class="absolute -bottom-20 left-0 w-full px-8 justify-center items-center transition-all duration-500 z-[999]"
 >
   <div
-    class="w-full glass backdrop-blur-lg rounded-lg rounded-bl-none rounded-br-none p-4 flex flex-wrap gap-4"
+    class="w-full glass backdrop-blur-lg rounded-lg rounded-bl-none rounded-br-none p-4 flex flex-wrap gap-4 justify-center"
   >
-    {{range .Params.skills}}
+    {{ range .Site.Pages }} {{ if .Params.skills }} {{ range .Params.skills }}
     <div class="bg-white w-fit h-fit p-2 rounded-lg relative">
-      <img class="h-6 w-6" src="{{.icon}}" alt="{{.name}}" />
+      <img class="h-6 w-6" src="{{ .icon }}" alt="{{ .name }}" />
       <div class="absolute right-0 text-sm font-bold text-stroke-bl">
-        {{.lvl}}
+        {{ .lvl }}
       </div>
     </div>
-    {{end}}
+    {{ end }} {{ end }} {{ end }}
   </div>
 </div>
 
