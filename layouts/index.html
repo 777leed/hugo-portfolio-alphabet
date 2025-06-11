@@ -1,98 +1,340 @@
 {{ define "main" }}
-<!-- skill inventory -->
-{{ partial "skill_inventory.html" . }}
 
 <!-- Header -->
 {{ partial "header.html" . }}
 <!-- main -->
 
-<div class="relative flex items-center w-full max-h-full mt-12">
-  <div class="h-full w-full flex flex-col lg:flex-row justify-between">
+<div class="relative flex items-center h-full w-full max-h-full py-16">
+  <div
+    id="main-content-wrapper"
+    class="h-full w-full flex flex-col-reverse gap-2 lg:flex-row justify-between relative overflow-hidden"
+  >
     <!-- Left Panel -->
-    <div class="overflow-y-auto w-full pr-4 relative lg:w-[45%] scrollbar-left">
-      <div class="normal-direction w-full">
-        <div class="pl-4">
-          <h1 class="font-bold text-4xl">KHALID KOUKOU</h1>
-          <div class="typewriter w-fit">
-            <h1 id="job-pos" class="font-light">Software Developer</h1>
-          </div>
-          <div class="mt-4 text-justify">
-            Hey there, welcome to my portfolio! To keep it short, I’m a creative
-            and adaptable developer with a passion for impactful
-            projects—whether it's designing tools, solving complex coding
-            problems, or crafting user-friendly experiences. Take a look around
-            and feel free to reach out!
-          </div>
-
-          <hr class="w-full my-6 h-0.5 border-t-0 bg-white/10" />
-
-          <h1 class="font-bold text-4xl">Experiences</h1>
-          <!-- exps -->
-          <div class="">
-            {{ range .Params.exps }}
-
-            <div class="mt-2 mb-2">
-              <div class="w-fit">
-                <a href="{{ .link }}" class="flex items-center">
-                  <img
-                    src="{{ .icon }}"
-                    class="grayscale h-6 w-6 invert"
-                    alt=""
-                  />
-                  <h1 class="font-light">{{ .company }}</h1>
-                </a>
-                <h1 class="font-extralight">{{ .period }}</h1>
-              </div>
-              <div class="mt-1 text-justify">{{ .desc }}</div>
+    <div class="w-full h-full lg:w-[45%]">
+      <!-- Indicator -->
+      <div id="left-panel" class="h-full pr-0 relative scrollbar-left lg:pr-4">
+        <div class="normal-direction w-full">
+          <div class="pl-0 lg:pl-4">
+            <h1 class="font-bold text-4xl" id="nameHeader">KHALID KOUKOU</h1>
+            <div class="typewriter w-fit">
+              <h1 id="job-pos" class="font-light">Software Developer</h1>
             </div>
-            {{if not .last}}
-            <hr class="w-full my-6 h-0.5 border-t-0 bg-white/5" />
-            {{ end }} {{ end }}
-          </div>
-        </div>
+            <div class="mt-4 text-justify" id="mainDesc">
+              Hey there, welcome to my portfolio! To keep it short, I’m a
+              creative and adaptable developer with a passion for impactful
+              projects—whether it's designing tools, solving complex coding
+              problems, or crafting user-friendly experiences. Take a look
+              around and feel free to reach out!
+            </div>
 
-        <!-- Moved bottom shadow outside the content div -->
-        <div
-          class="sticky bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent rounded-md to-black pointer-events-none"
-        ></div>
+            <hr class="w-full my-6 h-0.5 border-t-0 bg-white/10" />
+
+            <h1 class="font-bold text-4xl">Experience</h1>
+            <!-- exps -->
+            <div class="">
+              {{ range .Params.exps }}
+
+              <div class="mt-2 mb-2">
+                <div class="w-fit">
+                  <a href="{{ .link }}" class="flex items-center">
+                    <img
+                      src="{{ .icon }}"
+                      class="grayscale h-6 w-6 invert"
+                      alt=""
+                    />
+                    <h1 class="font-light">{{ .company }}</h1>
+                  </a>
+                  <h1 class="font-extralight">{{ .period }}</h1>
+                </div>
+                <div class="mt-1 text-justify">{{ .desc }}</div>
+              </div>
+              {{if not .last}}
+              <hr class="w-full my-6 h-0.5 border-t-0 bg-white/5" />
+              {{ end }} {{ end }}
+            </div>
+          </div>
+
+          <!-- Moved bottom shadow outside the content div -->
+          <div
+            class="sticky bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent rounded-md to-black pointer-events-none"
+          ></div>
+        </div>
       </div>
     </div>
+
     <!-- Right Panel -->
-    <div class="w-full lg:w-[53%] h-fit relative top-0 lg:sticky">
-      <div class="w-full flex max-h-60 justify-between grayscale">
+    <div
+      id="right-panel"
+      class="w-full h-full lg:w-[53%] flex flex-col gap-1 justify-between relative top-0 lg:sticky"
+    >
+      <div class="w-full flex h-48 justify-between grayscale">
         <div
-          class="w-[80%] rounded-lg border border-white overflow-hidden flex justify-center items-center bg-gradient-to-b from-gray-900 to-gray-600"
+          class="w-full lg:w-[80%] relative rounded-lg border-white overflow-hidden flex justify-center items-center bg-gradient-to-b from-gray-900 to-gray-950"
         >
-          <img src="images/collage1.png" alt="" id="CollageImg" />
-        </div>
-        <div class="w-[18%] rounded-lg overflow-hidden border border-white">
           <img
-            class="h-full w-full object-cover"
-            src="images/tumblr_ofpdabI2ta1toe0eco1_640.gif"
+            src="images/collage3x.png"
+            class="object-contain h-[90%] absolute bottom-0 z-10 ml-32"
+            alt=""
+            id="CollageImg"
+          />
+          <canvas
+            id="skillsChart"
+            class="max-h-72 max-w-96 absolute left-8"
+          ></canvas>
+          <!-- Skills carousel – fixed at the right-hand edge -->
+          <div
+            id="skill-carousel"
+            class="absolute right-0 z-10 h-full overflow-hidden bg-white/10 lg:bg-white px-2"
+          >
+            <ul id="skill-list" class="flex flex-col items-end space-y-2">
+              {{ range .Site.Pages }} {{ if .Params.skills }} {{ range
+              .Params.skills }}
+              <li class="bg-white w-fit h-fit p-2 rounded-lg">
+                <img
+                  class="h-6 w-6 object-contain"
+                  src="{{ .icon }}"
+                  alt="{{ .name }}"
+                />
+              </li>
+              {{ end }} {{ end }} {{ end }}
+            </ul>
+          </div>
+
+          <div
+            class="absolute bottom-0 left-0 w-full h-5 pointer-events-none blur-overlay"
+          ></div>
+        </div>
+        <div
+          class="hidden lg:flex w-[18%] relative rounded-lg overflow-hidden justify-center items-center border-white bg-gradient-to-b from-gray-950 to-gray-900"
+        >
+          <img
+            class="h-[80%] w-full mx-auto object-cover mix-blend-screen"
+            src="images/theglobespins.gif"
+            alt=""
+          />
+          <div
+            class="absolute bottom-0 left-0 w-full h-5 pointer-events-none blur-overlay"
+          ></div>
+        </div>
+      </div>
+      <h1 class="text-sm font-extralight italic mt-2 mb-2">
+        - Building the Future, One Line of Code at a Time.-
+      </h1>
+      <!-- filters -->
+      <div class="flex gap-2 mb-4 flex-wrap" id="filter-container">
+        <div
+          class="filter-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer activefilter"
+          data-filter="all"
+        >
+          <span>All</span>
+          <img
+            class="w-4 h-auto object-contain"
+            src="images/icons8/icons8-web-48.png"
+            alt=""
+          />
+        </div>
+        <div
+          class="filter-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer inactivefilter"
+          data-filter="Web"
+        >
+          <span>Web</span>
+          <img
+            class="w-4 h-auto object-contain"
+            src="images/icons8/icons8-website-48.png"
+            alt=""
+          />
+        </div>
+        <div
+          class="filter-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer inactivefilter"
+          data-filter="Mobile"
+        >
+          <span>Mobile</span>
+          <img
+            class="w-4 h-auto object-contain"
+            src="images/icons8/icons8-smartphone-48.png"
+            alt=""
+          />
+        </div>
+        <div
+          class="filter-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer inactivefilter"
+          data-filter="CLI"
+        >
+          <span>CLI</span>
+          <img
+            class="w-4 h-auto object-contain"
+            src="images/icons8/icons8-cmd-48.png"
+            alt=""
+          />
+        </div>
+        <div
+          class="filter-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer inactivefilter"
+          data-filter="Extension"
+        >
+          <span>Extensions & Plugins</span>
+          <img
+            class="w-4 h-auto object-contain"
+            src="images/icons8/icons8-plugin-48.png"
             alt=""
           />
         </div>
       </div>
-      <h1 class="text-sm font-extralight italic mt-2">
-        - Building the Future, One Line of Code at a Time.-
-      </h1>
-      <div class="flex justify-between">
-        <canvas id="skillsChart" class="max-h-72 max-w-96"></canvas>
-        <!-- sticker lounge -->
-        <div class="py-4 grayscale">
-          <a
-            href="https://github.com/777leed/
-          "
-            target="_blank"
+      <!-- Swiper Carousel -->
+      <div class="swiper mySwiper w-full mx-auto">
+        <div class="swiper-wrapper">
+          {{ range .Site.Pages }} {{ range .Params.projects }}
+          <div
+            class="swiper-slide project-card"
+            data-project-name="{{.name}}"
+            data-tags="{{.filter}}"
+            data-project-description="{{.description}}"
+            data-project-icon="{{.icon}}"
+            {{
+            if
+            .hasPreview
+            }}data-thumbnails="{{ jsonify .thumbnails }}"
+            {{
+            end
+            }}
           >
-            <img
-              src="images/stickerlounge.png"
-              class="max-h-52 rotate-12 hover:rotate-6 transition-all"
-              alt=""
-          /></a>
+            <!-- project card content -->
+            <div
+              class="relative max-w-xs h-48 p-4 rounded-lg grayscale bg-gradient-to-b from-gray-900 to-gray-950 overflow-hidden project-preview-trigger"
+            >
+              <h6 class="mb-2 mt-4">{{ .name }}</h6>
+              <p class="text-sm text-white/60 line-clamp-3">
+                {{ .description }}
+              </p>
+              <img
+                src="images/icons8/icons8-github-30.png"
+                class="absolute max-h-6 top-0 right-0 m-2"
+                alt=""
+              />
+              {{ if .hasPreview }}
+
+              <div
+                class="project-preview-btn bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer absolute right-0 bottom-0 m-4"
+              >
+                <span>Preview</span>
+
+                <img
+                  class="w-4 h-auto object-contain"
+                  src="images/icons8/icons8-eye-30.png"
+                  alt=""
+                />
+              </div>
+
+              {{else}}
+              <a
+                href="{{.link}}"
+                target="_blank"
+                class="bg-white text-black text-sm w-fit flex py-1 px-2 rounded-lg gap-2 cursor-pointer absolute right-0 bottom-0 m-4"
+              >
+                <span>CodeBase</span>
+
+                <img
+                  class="w-4 h-auto object-contain"
+                  src="images/icons8/icons8-eye-30.png"
+                  alt=""
+                />
+              </a>
+              {{end}}
+              <img
+                src="{{ .icon }}"
+                class="absolute w-24 h-auto left-0 bottom-0 object-contain no-grayscale"
+                alt="{{ .name }} icon"
+              />
+            </div>
+          </div>
+          {{ end }} {{ end }}
         </div>
       </div>
     </div>
+    <!-- Project Details Panel (Initially Hidden) -->
+    <div
+      id="project-details-panel"
+      class="absolute top-0 left-0 w-full h-full bg-[#040707] z-20 p-10 transform translate-x-full"
+    >
+      <button
+        id="back-to-main"
+        class="absolute top-5 left-5 text-white p-2 rounded-md flex items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 mr-2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+        Back
+      </button>
+      <div id="project-details-content" class="text-white mt-12 w-full">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <!-- Left Column -->
+          <div class="lg:w-1/2 w-full flex flex-col justify-between">
+            <div>
+              <h2 id="details-name" class="text-4xl font-bold mb-4">
+                Project Title
+              </h2>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-white text-black text-sm py-1 px-3 rounded-lg"
+                  >#HUGO</span
+                >
+              </div>
+              <p id="details-description" class="text-lg text-justify mb-6">
+                Project description goes here. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
+            </div>
+
+            <hr class="w-full my-4 h-0.5 border-t-0 bg-white/10" />
+
+            <!-- Showcase Images -->
+            <div>
+              <p class="text-lg font-semibold mb-2">Showcase</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <img
+                  src="https://placehold.co/600x400"
+                  class="rounded-lg object-cover w-full aspect-video showcasee"
+                  alt="Showcase 1"
+                />
+                <img
+                  src="https://placehold.co/600x400"
+                  class="rounded-lg object-cover w-full aspect-video showcasee"
+                  alt="Showcase 2"
+                />
+                <img
+                  src="https://placehold.co/600x400"
+                  class="rounded-lg object-contain w-full aspect-video showcasee"
+                  alt="Showcase 3"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Featured Image -->
+          <div class="lg:w-1/2 w-full rounded-lg overflow-hidden">
+            <img
+              src="https://placehold.co/600x400"
+              class="w-full h-full object-cover bg-white aspect-video rounded-lg showcasee"
+              alt="Featured Image"
+              id="displayedimg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 right-0 text-xs text-end">
+    Built with love and Javascript ♥
+    <br />
+    Khalid Koukou 2025 ©
   </div>
 </div>
 

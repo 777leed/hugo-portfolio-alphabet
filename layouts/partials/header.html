@@ -1,5 +1,7 @@
-<header class="flex justify-between items-center">
-  <a href="{{ .Site.BaseURL }}">
+<header
+  class="absolute top-0 w-full py-4 px-10 flex justify-between items-center"
+>
+  <a href="{{ .Site.BaseURL }}" class="z-10">
     <img
       class="h-10 w-10 rounded-sm"
       src="/images/Global.png"
@@ -7,11 +9,11 @@
       id="logoImg"
     />
   </a>
-  <nav class="lg:w-[53%]">
-    <ul class="hidden items-center justify-between text-sm lg:flex">
-      <li id="expp">
-        <a href="" class="text-white flex gap-2 items-center">
-          <span>Exp</span>
+  <nav class="z-10 lg:w-[53%]">
+    <ul class="items-center justify-between text-sm flex">
+      <li class="" id="expp">
+        <a href="" class="text-white hidden lg:flex gap-2 items-center">
+          <span>Experience</span>
           <img
             class="h-5 w-5 invert"
             src="/images/icons8/icons8-rating-48.png"
@@ -19,22 +21,21 @@
           />
         </a>
       </li>
-
       <li class="">
         <a
-          href="{{ .Site.BaseURL }}/featured/"
-          class="text-white flex gap-2 items-center"
+          class="text-white hidden lg:flex gap-2 items-center"
+          href="{{ .Site.BaseURL }}/alphabet/"
         >
-          <span>Featured Work</span>
+          <span>Projects</span>
           <img
             class="h-5 w-5 invert"
-            src="/images/icons8/icons8-best-product-32.png"
+            src="/images/icons8/icons8-services-32.png"
             alt="star icon"
           />
         </a>
       </li>
       <li
-        class="text-white flex gap-2 items-center cursor-pointer"
+        class="text-white hidden lg:flex gap-2 items-center cursor-pointer"
         id="skill-button"
       >
         <span>Skills</span>
@@ -44,126 +45,84 @@
           alt="star icon"
         />
       </li>
-      <li>
-        <a
-          class="text-white flex gap-2 items-center"
-          href="{{ .Site.BaseURL }}/alphabet/"
-        >
-          <span>Alphabets</span>
-          <img
-            class="h-5 w-5 invert"
-            src="/images/icons8/icons8-services-32.png"
-            alt="star icon"
-          />
-        </a>
+      <li
+        class="text-white hidden lg:flex gap-2 items-center cursor-pointer"
+        id="skill-button"
+      >
+        <span>Resume</span>
+        <img
+          class="h-5 w-5 invert"
+          src="/images/icons8/icons8-download-60.png"
+          alt="star icon"
+        />
       </li>
       <!-- socials -->
       <li>
-        <a
-          href="https://www.linkedin.com/in/khalid-koukou/
-        "
-          target="_blank"
-          class="flex gap-1 bg-white rounded-md px-2 py-1 items-center"
-        >
-          <span class="text-black">Socials</span>
-          <img
-            class="h-5 w-5"
-            src="/images/icons8/icons8-email-48.png"
-            alt="star icon"
-          />
-        </a>
-      </li>
-      <!-- light/dark mode -->
-      <!-- <li
-        id="torch-toggle"
-        class="flex gap-1 bg-white rounded-md px-2 py-1 items-center cursor-pointer"
-      >
-        <img
-          class="h-5 w-5"
-          src="/images/icons8/icons8-dark-mode-30.png"
-          alt="star icon"
-        />
-      </li> -->
-    </ul>
-    <button
-      id="mobile-button"
-      class="flex flex-col w-fit h-fit gap-1 cursor-pointer lg:hidden"
-    >
-      <div class="w-4 h-0.5 border-t-0 bg-white"></div>
-      <div class="w-4 h-0.5 border-t-0 bg-white"></div>
-      <div class="w-4 h-0.5 border-t-0 bg-white"></div>
-    </button>
-    <div
-      class="w-fit min-w-60 h-screen absolute z-[999] top-0 glass -right-72 transition-all duration-500"
-      id="mobile-menu"
-    >
-      <ul class="p-4 gap-6 justify-between text-sm flex flex-col relative">
-        <div
-          id="mobile-menu-close"
-          class="absolute top-0 right-0 p-4 cursor-pointer"
-        >
-          X
+        <div class="relative inline-block text-left">
+          <button
+            type="button"
+            class="flex gap-1 bg-white rounded-md px-2 py-1 items-center"
+            onclick="document.getElementById('socialsDropdown').classList.toggle('hidden')"
+          >
+            <span class="text-black">Socials</span>
+            <img
+              class="h-5 w-5"
+              src="images/icons8/icons8-email-48.png"
+              alt="social icon"
+            />
+          </button>
+
+          <div
+            id="socialsDropdown"
+            class="absolute right-0 mt-2 w-32 bg-white backdrop-blur-sm rounded-md shadow-lg hidden z-10"
+          >
+            <ul class="py-1 text-black">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/khalid-koukou/"
+                  target="_blank"
+                  class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <img
+                    class="h-5 w-5"
+                    src="images/icons8/icons8-linkedin-50.png"
+                    alt="LinkedIn"
+                  />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:khalidkoukou70@gmail.com"
+                  class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <img
+                    class="h-5 w-5"
+                    src="/images/icons8/icons8-gmail-50.png"
+                    alt="Email"
+                  />
+                  Email
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/777leed"
+                  target="_blank"
+                  class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                >
+                  <img
+                    class="h-5 w-5"
+                    src="images/icons8/icons8-github-50.png"
+                    alt="GitHub"
+                  />
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <li>
-          <a href="" class="text-white flex gap-2 items-center mt-6">
-            <span>Exp</span>
-            <img
-              class="h-5 w-5 invert"
-              src="/images/icons8/icons8-rating-48.png"
-              alt="star icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            class="text-white flex gap-2 items-center"
-            href="{{ .Site.BaseURL }}/featured/"
-          >
-            <span>Featured Work</span>
-            <img
-              class="h-5 w-5 invert"
-              src="/images/icons8/icons8-best-product-32.png"
-              alt="star icon"
-            />
-          </a>
-        </li>
-        <li
-          class="text-white flex gap-2 items-center cursor-pointer"
-          id="skill-button"
-        >
-          <span>Skills</span>
-          <img
-            class="h-5 w-5 invert"
-            src="/images/icons8/icons8-html-50.png"
-            alt="star icon"
-          />
-        </li>
-        <li>
-          <a
-            class="text-white flex gap-2 items-center"
-            href="{{ .Site.BaseURL }}/alphabet/"
-          >
-            <span>Alphabets</span>
-            <img
-              class="h-5 w-5 invert"
-              src="/images/icons8/icons8-services-32.png"
-              alt="star icon"
-            />
-          </a>
-        </li>
-        <!-- socials -->
-        <li
-          class="flex gap-1 bg-white rounded-md px-2 py-1 items-center justify-between"
-        >
-          <span class="text-black">Socials</span>
-          <img
-            class="h-5 w-5"
-            src="/images/icons8/icons8-email-48.png"
-            alt="star icon"
-          />
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
   </nav>
 </header>
 
