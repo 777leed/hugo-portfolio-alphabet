@@ -12,7 +12,11 @@
   <nav class="z-10 lg:w-[53%]">
     <ul class="items-center justify-between text-sm flex">
       <li class="" id="expp">
-        <a href="" class="text-white hidden lg:flex gap-2 items-center">
+        <a
+          href="#"
+          class="text-white hidden lg:flex gap-2 items-center"
+          id="experience-button"
+        >
           <span>Experience</span>
           <img
             class="h-5 w-5 invert"
@@ -23,8 +27,9 @@
       </li>
       <li class="">
         <a
-          class="text-white hidden lg:flex gap-2 items-center"
-          href="{{ .Site.BaseURL }}/alphabet/"
+          class="text-white hidden lg:flex gap-2 items-center cursor-pointer"
+          href="#"
+          id="projects-button"
         >
           <span>Projects</span>
           <img
@@ -45,26 +50,28 @@
           alt="star icon"
         />
       </li>
-      <li
-        class="text-white hidden lg:flex gap-2 items-center cursor-pointer"
-        id="skill-button"
-      >
-        <span>Resume</span>
-        <img
-          class="h-5 w-5 invert"
-          src="/images/icons8/icons8-download-60.png"
-          alt="star icon"
-        />
+      <li id="resume-button">
+        <a
+          class="text-white hidden lg:flex gap-2 items-center cursor-pointer"
+          href="https://drive.google.com/file/d/1XaSQI09vEsuR4vnEkN25zk8IWVgxFBml/view?usp=sharing"
+        >
+          <span>Resume</span>
+          <img
+            class="h-5 w-5 invert"
+            src="/images/icons8/icons8-download-60.png"
+            alt="star icon"
+          />
+        </a>
       </li>
       <!-- socials -->
       <li>
-        <div class="relative inline-block text-left">
+        <div class="relative inline-block text-left animate-pulse">
           <button
             type="button"
             class="flex gap-1 bg-white rounded-md px-2 py-1 items-center"
             onclick="document.getElementById('socialsDropdown').classList.toggle('hidden')"
           >
-            <span class="text-black">Socials</span>
+            <span class="text-black">Let's Connect</span>
             <img
               class="h-5 w-5"
               src="images/icons8/icons8-email-48.png"
@@ -74,7 +81,7 @@
 
           <div
             id="socialsDropdown"
-            class="absolute right-0 mt-2 w-32 bg-white backdrop-blur-sm rounded-md shadow-lg hidden z-10"
+            class="absolute right-0 mt-2 w-36 bg-white backdrop-blur-sm rounded-md shadow-lg hidden z-10"
           >
             <ul class="py-1 text-black">
               <li>
