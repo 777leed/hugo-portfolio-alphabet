@@ -46,6 +46,7 @@ function rebuildSlides(cardsToShow, swiper, wrapper) {
       card.getAttribute("data-project-icon")
     );
     slide.setAttribute("data-thumbnails", card.getAttribute("data-thumbnails"));
+    slide.setAttribute("data-stack", card.getAttribute("data-stack"));
     wrapper.appendChild(slide);
   });
 }
@@ -120,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const backButton = document.getElementById("back-to-main");
 
   const detailsName = document.getElementById("details-name");
+
   const detailsDescription = document.getElementById("details-description");
 
   // Select all project preview buttons/areas
@@ -152,15 +154,25 @@ document.addEventListener("DOMContentLoaded", () => {
   projectPreviewButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       let showcasee = document.getElementsByClassName("showcasee");
+      const tagsContainer = document.getElementById("tags-container");
+      tagsContainer.innerHTML = "";
       let displayedimg = document.getElementById("displayedimg");
       const card = button.parentElement.parentElement;
       let thumbnails = JSON.parse(card.dataset.thumbnails);
+      let stack = JSON.parse(card.dataset.stack);
       Array.from(showcasee).forEach((pictureHolder, i) => {
         pictureHolder.src = thumbnails[i];
         pictureHolder.addEventListener("click", () => {
           displayedimg.src = pictureHolder.src;
           console.log("works");
         });
+      });
+      Array.from(stack).forEach((tag) => {
+        var tagg = document.createElement("div");
+        tagg.innerHTML = `<span class="bg-white text-black text-sm py-1 px-3 rounded-lg"
+                  >${tag}</span
+                >`;
+        tagsContainer.appendChild(tagg);
       });
       event.preventDefault(); // Prevent any default anchor behavior if it's a link
       if (!card) return; // Should not happen if structure is correct

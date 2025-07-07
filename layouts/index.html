@@ -191,7 +191,9 @@
             {{
             if
             .hasPreview
-            }}data-thumbnails="{{ jsonify .thumbnails }}"
+            }}
+            data-thumbnails="{{ jsonify .thumbnails }}"
+            data-stack="{{ jsonify .tags }}"
             {{
             end
             }}
@@ -282,11 +284,7 @@
               <h2 id="details-name" class="text-4xl font-bold mb-4">
                 Project Title
               </h2>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-white text-black text-sm py-1 px-3 rounded-lg"
-                  >#HUGO</span
-                >
-              </div>
+              <div class="flex flex-wrap gap-2 mb-4" id="tags-container"></div>
               <p id="details-description" class="text-lg text-justify mb-6">
                 Project description goes here. Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit.

@@ -26,16 +26,13 @@ exps:
 skills:
   - name: "React"
     lvl: "MAX"
-    icon: "https://static-00.iconduck.com/assets.00/react-icon-512x456-5xl7nmtw.png"
+    icon: "/images/React-icon.svg.png"
   - name: "NextJs"
     lvl: "HIGH"
-    icon: "https://cdn.worldvectorlogo.com/logos/next-js.svg"
+    icon: "/images/vuejs.webp"
   - name: "VueJs"
     lvl: "MID"
-    icon: "https://static-00.iconduck.com/assets.00/vue-js-icon-2048x1755-wlgbvqu0.png"
-  - name: "Laravel"
-    lvl: "MID"
-    icon: "https://static-00.iconduck.com/assets.00/laravel-icon-249x256-htls1yg6.png"
+    icon: "/images/png-transparent-laravel-hd-logo.png"
   - name: "Electron"
     lvl: "MAX"
     icon: "https://dashboard.snapcraft.io/site_media/appmedia/2021/08/512x512_LA7uVJn.png"
@@ -44,7 +41,7 @@ skills:
     icon: "https://img.icons8.com/badges/512/flutter.png"
   - name: "Tailwind"
     lvl: "MAX"
-    icon: "https://static-00.iconduck.com/assets.00/tailwind-icon-512x309-a8f1tun1.png"
+    icon: "/images/css_tailwind_logo_icon_214735.webp"
   - name: "Python"
     lvl: "MAX"
     icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Python_icon_%28black_and_white%29.svg/2048px-Python_icon_%28black_and_white%29.svg.png"
@@ -75,10 +72,10 @@ projects:
     hasPreview: True
     thumbnails:
       [
-        "/images/RCW/preview1.webp",
-        "/images/RCW/preview2.webp",
-        "/images/RCW/preview3.webp",
-        "/images/RCW/preview4.webp",
+        "/images/RCW/rc11.png",
+        "/images/RCW/rc12.png",
+        "/images/RCW/rc13.png",
+        "/images/RCW/rc14.png",
       ]
 
   - name: "OFFBEAT"
